@@ -1,15 +1,6 @@
 import sqlite3
 import user
 
-def retrieve_all_posts(db_path):
-    """Returns a list of all posts from the blog"""
-    pass
-
-def retrieve_post(db_path, post_id):
-    """Retrieves a specific post from the blog"""
-    pass
-
-
 class Post:
     def get_title():
         pass
