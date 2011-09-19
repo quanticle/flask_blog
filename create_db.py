@@ -1,6 +1,6 @@
 import sqlite3
 
-create_user_sql = """CREATE TABLE users (username TEXT, password_hash TEXT, salt TEXT, PRIMARY KEY (username))"""
+create_user_sql = """CREATE TABLE users (username TEXT, realname TEXT, password_hash TEXT, salt TEXT, PRIMARY KEY (username))"""
 create_post_sql = """CREATE TABLE posts (post_title TEXT, post_date TEXT, post_file TEXT, post_author TEXT,
 FOREIGN KEY(post_author) REFERENCES users(username))"""
 

@@ -18,5 +18,5 @@ class User:
         return self.salt
 
     def get_real_name(self):
-        return self.real_name
+        return self.realname
 
