@@ -2,6 +2,9 @@
 
 import sqlite3
 from models.user import User
+
+class UserExistsException(Exception): pass
+
 class UserController:
     def __init__(self, db_connection):
         self.db_connection = db_connection
@@ -9,10 +12,13 @@ class UserController:
     def add_user(self, user):
         """Adds a user to the database"""
         sql = r'INSERT INTO users (username, realname, password_hash, salt) VALUES (?, ?, ?, ?)'
-        db_cursor = self.db_connection.cursor() 
-        db_cursor.execute(sql, (user.get_username(), user.get_real_name(), user.get_password_hash(), user.get_salt()))
-        db_cursor.close()
-        self.db_connection.commit()
+        if self.get_user(user.get_username()) == None:
+            db_cursor = self.db_connection.cursor() 
+            db_cursor.execute(sql, (user.get_username(), user.get_real_name(), user.get_password_hash(), user.get_salt()))
+            db_cursor.close()
+            self.db_connection.commit()
+        else: 
+            raise UserExistsException()
 
     def get_user(self, username):
         """Retrieves a user from the database, given a username"""
