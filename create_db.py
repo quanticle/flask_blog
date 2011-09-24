@@ -1,3 +1,4 @@
+
 import sqlite3
 
 create_user_sql = """CREATE TABLE users (username TEXT, realname TEXT, password_hash TEXT, salt TEXT, PRIMARY KEY (username))"""

@@ -2,10 +2,10 @@ import sqlite3
 import user
 
 class Post:
-    def __init__(self, post_title, post_date, post_author_id, post_id=None,  post_text=None):
+    def __init__(self, post_title, post_date, post_author, post_id=None,  post_text=None):
         self.title = post
         self.date = post_date
-        self.author_id = post_author_id
+        self.author = post_author
 
         if post_id != None:
             self.post_id = post_id
@@ -26,7 +26,7 @@ class Post:
         return self.post_id
         
     def get_author(self):
-        return self.author_id
+        return self.author
 
     def set_title(self, post_title):
         self.title = post_title
@@ -37,5 +37,5 @@ class Post:
     def set_text(self, post_text):
         self.text = post_text
         
-    def set_author(self, post_author_id):
-        self.author_id = post_author_id
+    def set_author(self, post_author):
+        self.author_id = post_author
