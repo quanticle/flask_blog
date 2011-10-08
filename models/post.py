@@ -3,7 +3,7 @@ import user
 
 class Post:
     def __init__(self, post_title, post_date, post_author, post_id=None,  post_text=None):
-        self.title = post
+        self.title = post_title
         self.date = post_date
         self.author = post_author
 
@@ -38,4 +38,4 @@ class Post:
         self.text = post_text
         
     def set_author(self, post_author):
-        self.author_id = post_author
+        self.author = post_author

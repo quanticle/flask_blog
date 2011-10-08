@@ -1,6 +1,7 @@
 #! /usr/bin/python
 
 import sqlite3
+from hashlib import sha1
 from models.user import User
 
 class UserExistsException(Exception): pass
@@ -36,3 +37,17 @@ class UserController:
             cursor.close()
             return retrieved_user
 
+    def authenticate_user(self, username, password):
+        """Given a username and password, returns a user object if the username/password combination is valid, otherwise, returns None"""
+        user = self.get_user(username)
+        if user == None:
+            return None
+        else:
+            hasher = sha1()
+            hasher.update(password)
+            hasher.update(user.get_salt())
+            if hasher.hexdigest() == user.get_password_hash():
+                return user
+            else:
+                return None
+        
