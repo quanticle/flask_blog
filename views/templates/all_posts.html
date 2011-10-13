@@ -1,0 +1,13 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="http://twitter.github.com/bootstrap/1.3.0/bootstrap.min.css" />
+    <title> {{blog_title}} </title>
+  </head>
+  <body>
+    <div class="container">
+      {% for post in post_list %}
+	<h2> {{ post.get_title() }} </h2>
+	{{ post.get_title() }} 
+      {% endfor %}
+    </div>
+</html>
