@@ -1,5 +1,5 @@
-from flask import Flask
-from views import all_posts, add_post_form
+from flask import Flask, request
+from views import all_posts, add_post_form, login_page
 from config.blog_config import config
 import sqlite3
 
@@ -20,5 +20,12 @@ def add_post():
     else: 
         return add_post_form.show_add_post()
 
+@app.route('/login/<destination>')
+def login():
+    if request.method == "POST":
+        #Handle login handling here
+        pass
+    else: 
+        return login_page.show_login_page(destination)
 if __name__ == '__main__':
     app.run()
